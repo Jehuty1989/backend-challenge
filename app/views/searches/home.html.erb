@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Backend Challenge</h1>
+  <div class="container" data-controller="search">
+    <%= simple_form_for @search do |f| %>
+      <%= f.input :latitude %>
+      <%= f.input :longitude %>
+      <%= f.submit 'Search' %>
+    <% end %>
+  </div>
+</div>
