@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container" data-controller="search">
   <h1>Backend Challenge</h1>
-  <div class="container" data-controller="search">
-    <%= simple_form_for @search do |f| %>
-      <%= f.input :latitude %>
-      <%= f.input :longitude %>
+  <div class="container">
+    <%= simple_form_for @search, remote: true, data: { action: "submit->search#latlong" } do |f| %>
+      <%= f.input :latitude, input_html: { data: { search_target: "lat" } } %>
+      <%= f.input :longitude, input_html: { data: { search_target: "long" } } %>
       <%= f.submit 'Search' %>
     <% end %>
   </div>
+  <%= render 'latlong' %>
 </div>
