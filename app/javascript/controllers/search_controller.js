@@ -8,7 +8,7 @@ export default class extends Controller {
     const latitude = this.latTarget.value || null
     const longitude = this.longTarget.value || null
 
-    if (latitude === null || latitude === null) {
+    if (latitude === null || longitude === null || latitude > 85.05112878 || latitude < -85.05112878 || longitude > 180 || longitude < -180 || Number.isNaN(Number.parseFloat(latitude)) === true || Number.isNaN(Number.parseFloat(longitude)) === true) {
       this.paraTarget.innerHTML = "<h2>Please enter valid coordinates</h2>"
       return
     }
