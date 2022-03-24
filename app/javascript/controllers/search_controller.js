@@ -5,8 +5,14 @@ export default class extends Controller {
 
   latlong(event) {
     event.preventDefault()
-    const latitude = this.latTarget.value
-    const longitude = this.longTarget.value
+    const latitude = this.latTarget.value || null
+    const longitude = this.longTarget.value || null
+
+    if (latitude === null || latitude === null) {
+      this.paraTarget.innerHTML = "<h2>Please enter valid coordinates</h2>"
+      return
+    }
+
     const museumObj = {}
     const mapboxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/museum.json?limit=10&type=poi&proximity=${longitude},${latitude}&access_token=pk.eyJ1IjoiamVodXR5MTk4OSIsImEiOiJja3o4Z3Z1cDEwdmR5Mm5uOTh6em43bDE4In0.rA_tXFai72Z4Xq4ndP-QFA`
 

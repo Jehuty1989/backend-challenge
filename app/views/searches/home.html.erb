@@ -1,10 +1,12 @@
 <div class="container" data-controller="search">
   <h1>Backend Challenge</h1>
   <div class="container">
-    <%= simple_form_for @search, remote: true, data: { action: "submit->search#latlong" } do |f| %>
-      <%= f.input :latitude, input_html: { data: { search_target: "lat" } } %>
-      <%= f.input :longitude, input_html: { data: { search_target: "long" } } %>
-      <%= f.submit 'Search' %>
+    <%= form_tag("/", method: "get", remote: true, data: { action: "submit->search#latlong" }) do %>
+      <%= label_tag(:lat, 'Latitude') %>
+      <%= text_field_tag(:lat, '', data: {search_target: "lat"}) %>
+      <%= label_tag(:lat, 'Longitude') %>
+      <%= text_field_tag(:lon, '', data: {search_target: "long"}) %>
+      <%= submit_tag('Search') %>
     <% end %>
   </div>
   <%= render 'latlong' %>
